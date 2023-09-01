@@ -3,25 +3,21 @@
 @tailwind utilities;
 
 :root {
-  --foreground-rgb: 0, 0, 0;
-  --background-start-rgb: 214, 219, 220;
-  --background-end-rgb: 255, 255, 255;
+  --primary-text: hsl(200, 15%, 8%);
+  --body: hsl(0, 0%, 98%);
+  --elements: hsl(0, 0%, 100%);
+  --input-text: hsl(0, 0%, 52%);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --foreground-rgb: 255, 255, 255;
-    --background-start-rgb: 0, 0, 0;
-    --background-end-rgb: 0, 0, 0;
+.dark {
+  --primary-text: hsl(0, 0%, 100%);
+  --body: hsl(207, 26%, 17%);
+  --elements: hsl(209, 23%, 22%);
+  --input-text: hsl(0, 0%, 52%);
+}
+
+@layer base {
+  body {
+    @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body;
   }
-}
-
-body {
-  color: rgb(var(--foreground-rgb));
-  background: linear-gradient(
-      to bottom,
-      transparent,
-      rgb(var(--background-end-rgb))
-    )
-    rgb(var(--background-start-rgb));
 }
