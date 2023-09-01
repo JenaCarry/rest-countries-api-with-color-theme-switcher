@@ -1,15 +1,13 @@
+"use client";
+
 import { Form } from "@/components/Form";
+import { useState } from "react";
 
 export default function Home() {
+  const [selected, setSelected] = useState<string>("Filter by Region");
   return (
     <main className="max-[375px]:px-3 px-8">
-      <Form />
-      <p>
-        Lorem ipsum dolor sit amet consectetur adipisicing elit. Sequi, hic
-        ducimus! Ipsum impedit nesciunt reprehenderit repudiandae blanditiis
-        saepe ullam culpa asperiores delectus similique expedita eius, veniam
-        voluptates dicta quaerat! Iure.
-      </p>
+      <Form selected={selected} setSelected={setSelected} />
     </main>
   );
 }
