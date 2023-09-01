@@ -6,6 +6,7 @@
   --primary-text: hsl(200, 15%, 8%);
   --body: hsl(0, 0%, 98%);
   --elements: hsl(0, 0%, 100%);
+  --elements-hover: hsl(0, 0%, 90%);
   --input-text: hsl(0, 0%, 52%);
 }
 
@@ -13,6 +14,7 @@
   --primary-text: hsl(0, 0%, 100%);
   --body: hsl(207, 26%, 17%);
   --elements: hsl(209, 23%, 22%);
+  --elements-hover: hsl(208, 26%, 18%);
   --input-text: hsl(0, 0%, 52%);
 }
 

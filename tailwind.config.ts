@@ -13,6 +13,7 @@ const config: Config = {
         "primary-text": "var(--primary-text)",
         body: "var(--body)",
         elements: "var(--elements)",
+        "elements-hover": "var(--elements-hover)",
         "input-text": "var(--input-text)",
       },
     },
