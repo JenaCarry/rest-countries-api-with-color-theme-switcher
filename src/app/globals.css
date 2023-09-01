@@ -20,6 +20,6 @@
 
 @layer base {
   body {
-    @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body;
+    @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body transition-all duration-75 ease-in-out;
   }
 }
