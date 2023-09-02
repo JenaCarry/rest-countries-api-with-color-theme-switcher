@@ -47,7 +47,9 @@ export function Form({ selected, setSelected }: FormProps) {
         </div>
         <ul
           className={`w-full absolute bg-elements shadow-md rounded-lg z-10 overflow-hidden transition-all duration-200 ease-in-out ${
-            isActive ? "opacity-100 translate-y-0" : "opacity-0 -translate-y-1"
+            isActive
+              ? "opacity-100 translate-y-0 visible"
+              : "opacity-0 -translate-y-1 invisible"
           }`}
         >
           {regions.map((region, index) => (
