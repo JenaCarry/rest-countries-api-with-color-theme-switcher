@@ -7,7 +7,7 @@ export interface CountriesProps {
   capital: string;
   numericCode: number;
   flags: {
-    svg: string;
+    png: string;
   };
 }
 

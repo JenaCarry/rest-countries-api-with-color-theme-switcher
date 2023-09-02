@@ -26,7 +26,7 @@ export default function Home() {
             region={country.region}
             capital={country.capital}
             numericCode={country.numericCode}
-            flags={country.flags.svg}
+            flags={country.flags.png}
           />
         ))}
       </ul>
