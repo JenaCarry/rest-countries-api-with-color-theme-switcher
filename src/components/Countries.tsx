@@ -10,12 +10,22 @@ export function Countries({
 }: CountryProps) {
   return (
     <>
-      <li>
-        <img src={flags} alt={name} />
-        <h2>{name}</h2>
-        <p>Population: {population}</p>
-        <p>Region: {region}</p>
-        <p>Capital: {capital}</p>
+      <li className="bg-elements shadow-md rounded-lg overflow-hidden">
+        <div className="w-full h-52">
+          <img className="w-full h-full" src={flags} alt={name} />
+        </div>
+        <div className="px-8 py-5 space-y-3">
+          <h2 className="text-base font-extrabold pb-1.5">{name}</h2>
+          <p>
+            <span className="font-semibold">Population:</span> {population}
+          </p>
+          <p>
+            <span className="font-semibold">Region:</span> {region}
+          </p>
+          <p>
+            <span className="font-semibold">Capital:</span> {capital}
+          </p>
+        </div>
       </li>
     </>
   );
