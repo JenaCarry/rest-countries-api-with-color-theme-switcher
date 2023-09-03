@@ -24,7 +24,9 @@ export function Header() {
 
   return (
     <header className="flex items-center justify-between bg-elements shadow-md text-base max-[375px]:px-3 px-8 py-11">
-      <h2 className="font-extrabold">Where in the world?</h2>
+      <h2 className="font-extrabold">
+        <a href="#">Where in the world?</a>
+      </h2>
       <button
         className="flex items-center gap-2.5 font-semibold"
         onClick={() => seIsLightTheme(!isLightTheme)}
