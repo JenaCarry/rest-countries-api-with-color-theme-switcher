@@ -14,7 +14,7 @@ export function Countries({
         <div className="w-full h-52">
           <img className="w-full h-full" src={flags} alt={name} />
         </div>
-        <div className="px-8 py-5 space-y-3">
+        <div className="px-8 py-6 space-y-3">
           <h2 className="text-base font-extrabold pb-1.5">{name}</h2>
           <p>
             <span className="font-semibold">Population:</span> {population}
