@@ -1,29 +1,34 @@
 "use client";
 
-import { useState } from "react";
+import React, { useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
 interface FormProps {
-  selected: string;
-  setSelected: (selected: string) => void;
+  filter: string;
+  setFilter: (filter: string) => void;
   search: string;
   setSearch: (search: string) => void;
 }
 
-export function Form({ selected, setSelected, search, setSearch }: FormProps) {
+export function Form({ filter, setFilter, search, setSearch }: FormProps) {
   const [isActive, setIsActive] = useState(false);
   const regions = [
+    "All",
     "Africa",
-    "America",
+    "Americas",
     "Asia",
     "Europe",
     "Oceania",
-    "Antarctica",
+    "Antarctic",
   ];
 
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
+    e.preventDefault();
+  }
+
   return (
-    <form className="space-y-12">
+    <form className="space-y-12" onSubmit={handleSubmit}>
       <div className="relative flex items-center">
         <input
           type="search"
@@ -42,7 +47,7 @@ export function Form({ selected, setSelected, search, setSearch }: FormProps) {
           className="flex items-center justify-between bg-elements py-4 shadow-md rounded-lg px-5 cursor-pointer"
           onClick={() => setIsActive(!isActive)}
         >
-          <span className="text-primary-text">{selected}</span>
+          <span className="text-primary-text">{filter}</span>
           <FaAngleDown
             className={`text-primary-text text-base transition-all duration-200 ease-in-out ${
               isActive && "rotate-180"
@@ -61,7 +66,7 @@ export function Form({ selected, setSelected, search, setSearch }: FormProps) {
               key={index}
               className="cursor-pointer px-5 py-3 hover:bg-elements-hover transition-all duration-200 ease-in-out"
               onClick={() => {
-                setSelected(region);
+                setFilter(region);
                 setIsActive(false);
               }}
             >
