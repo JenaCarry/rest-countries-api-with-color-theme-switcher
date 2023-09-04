@@ -12,7 +12,7 @@ export function Countries({
     <>
       <li className="bg-elements shadow-md rounded-lg overflow-hidden">
         <div className="w-full h-52">
-          <img className="w-full h-full" src={flags} alt={name} />
+          <img className="w-full h-full" src={flags} alt={name} loading="lazy" />
         </div>
         <div className="px-8 py-6 space-y-3">
           <h2 className="text-base font-extrabold pb-1.5">{name}</h2>

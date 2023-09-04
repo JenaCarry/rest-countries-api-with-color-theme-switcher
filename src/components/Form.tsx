@@ -30,7 +30,7 @@ export function Form({ selected, setSelected, search, setSearch }: FormProps) {
           name="search"
           id="search"
           placeholder="Search for a country"
-          className="w-full text-input-text bg-elements py-4 shadow-md pl-12 rounded-lg"
+          className="w-full text-input-text bg-elements py-4 shadow-md pl-12 pr-5 rounded-lg outline-none"
           value={search}
           onChange={(e) => setSearch(e.target.value)}
         />
