@@ -22,4 +22,9 @@
   body {
     @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body transition-all duration-75 ease-in-out;
   }
+
+  input:-webkit-autofill {
+    box-shadow: 0 0 0 1000px var(--elements) inset;
+    -webkit-text-fill-color: var(--primary-text);
+  }
 }
