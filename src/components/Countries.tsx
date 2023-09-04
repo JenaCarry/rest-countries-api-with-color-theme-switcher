@@ -5,14 +5,18 @@ export function Countries({
   population,
   region,
   capital,
-  numericCode,
   flags,
 }: CountryProps) {
   return (
     <>
-      <li className="bg-elements shadow-md rounded-lg overflow-hidden">
+      <li className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ease-in-out hover:-translate-y-1.5 hover:opacity-90">
         <div className="w-full h-52">
-          <img className="w-full h-full" src={flags} alt={name} loading="lazy" />
+          <img
+            className="w-full h-full"
+            src={flags}
+            alt={name}
+            loading="lazy"
+          />
         </div>
         <div className="px-8 py-6 space-y-3">
           <h2 className="text-base font-extrabold pb-1.5">{name}</h2>

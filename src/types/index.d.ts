@@ -5,7 +5,6 @@ export interface CountriesProps {
   population: number;
   region: string;
   capital: string;
-  numericCode: number;
   flags: {
     png: string;
   };
@@ -16,6 +15,5 @@ export interface CountryProps {
   population: number;
   region: string;
   capital: string;
-  numericCode: number;
   flags: string;
 }
