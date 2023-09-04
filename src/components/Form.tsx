@@ -7,9 +7,11 @@ import { FaSearch } from "react-icons/fa";
 interface FormProps {
   selected: string;
   setSelected: (selected: string) => void;
+  search: string;
+  setSearch: (search: string) => void;
 }
 
-export function Form({ selected, setSelected }: FormProps) {
+export function Form({ selected, setSelected, search, setSearch }: FormProps) {
   const [isActive, setIsActive] = useState(false);
   const regions = [
     "Africa",
@@ -29,6 +31,8 @@ export function Form({ selected, setSelected }: FormProps) {
           id="search"
           placeholder="Search for a country"
           className="w-full text-input-text bg-elements py-4 shadow-md pl-12 rounded-lg"
+          value={search}
+          onChange={(e) => setSearch(e.target.value)}
         />
         <FaSearch className="absolute left-5" />
       </div>
