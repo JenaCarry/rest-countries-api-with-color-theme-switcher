@@ -6,7 +6,7 @@
   --primary-text: hsl(200, 15%, 8%);
   --body: hsl(0, 0%, 98%);
   --elements: hsl(0, 0%, 100%);
-  --elements-hover: hsl(0, 0%, 90%);
+  --elements-hover: hsl(0, 0%, 92%);
   --input-text: hsl(0, 0%, 52%);
 }
 
@@ -14,13 +14,17 @@
   --primary-text: hsl(0, 0%, 100%);
   --body: hsl(207, 26%, 17%);
   --elements: hsl(209, 23%, 22%);
-  --elements-hover: hsl(208, 26%, 18%);
+  --elements-hover: hsl(208, 26%, 20%);
   --input-text: hsl(0, 0%, 52%);
 }
 
 @layer base {
   body {
     @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body transition-all duration-75 ease-in-out;
+  }
+
+  main {
+    @apply max-[375px]:px-3 px-8;
   }
 
   input:-webkit-autofill {

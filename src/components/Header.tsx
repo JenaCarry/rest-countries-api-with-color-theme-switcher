@@ -29,7 +29,7 @@ export function Header() {
         <Link href="/">Where in the world?</Link>
       </h2>
       <button
-        className="flex items-center gap-2.5 font-semibold"
+        className="flex items-center gap-2 font-semibold"
         onClick={() => seIsLightTheme(!isLightTheme)}
       >
         {isLightTheme ? (

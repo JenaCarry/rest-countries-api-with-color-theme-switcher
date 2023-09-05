@@ -17,7 +17,7 @@ export default function Home() {
   }, []);
 
   return (
-    <main className="max-[375px]:px-3 px-8">
+    <main>
       <Form
         filter={filter}
         setFilter={setFilter}

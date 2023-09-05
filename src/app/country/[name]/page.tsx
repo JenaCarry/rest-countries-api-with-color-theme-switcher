@@ -4,6 +4,7 @@ import { CountriesProps } from "@/types";
 import { getCountry } from "@/utils/handleApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { FaArrowLeft } from "react-icons/fa";
 
 interface HomeProps {
   params: {
@@ -21,63 +22,99 @@ export default function Home({ params }: HomeProps) {
 
   return (
     <main>
-      <h2>{name}</h2>
+      <h2 className="sr-only">Country: {name}</h2>
+      <Link
+        href="/"
+        className="w-40 text-base bg-elements flex items-center justify-center gap-2.5 py-3.5 rounded-md shadow-lg hover:bg-elements-hover"
+      >
+        <FaArrowLeft />
+        Back
+      </Link>
       {country.map((item) => (
-        <section key={item.numericCode}>
-          <Link href="/">Voltar CC</Link>
+        <section
+          key={item.numericCode}
+          className="flex flex-col gap-6 mt-14 pb-12 max-w-md mx-auto"
+        >
           <div>
-            <img src={item.flags.png} alt={item.name} />
+            <img
+              src={item.flags.png}
+              alt={item.name}
+              className="w-full shadow-md rounded-sm"
+            />
           </div>
-          <h2>{item.name}</h2>
-          <p>
-            <span>Native Name: </span>
-            {item.nativeName}
-          </p>
-          <p>
-            <span>Population: </span>
-            {item.population}
-          </p>
-          <p>
-            <span>Region: </span>
-            {item.region}
-          </p>
-          <p>
-            <span>Sub Region: </span>
-            {item.subregion}
-          </p>
-          {item.capital && (
-            <p>
-              <span>Capital: </span>
-              {item.capital}
-            </p>
-          )}
-          <p>
-            <span>Top Level Domain: </span>
-            {item.topLevelDomain.map(
-              (tld, index) =>
-                `${tld}${item.topLevelDomain.length - 1 !== index ? ", " : ""}`
+          <h3 className="text-xl font-extrabold my-2">{item.name}</h3>
+          <ul className="flex flex-col gap-2.5">
+            <li>
+              <h4>
+                <span>Native Name: </span>
+                {item.nativeName}
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <span>Population: </span>
+                {item.population}
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <span>Region: </span>
+                {item.region}
+              </h4>
+            </li>
+            <li>
+              <h4>
+                <span>Sub Region: </span>
+                {item.subregion}
+              </h4>
+            </li>
+            {item.capital && (
+              <li>
+                <h4>
+                  <span>Capital: </span>
+                  {item.capital}
+                </h4>
+              </li>
             )}
-          </p>
-          {item.currencies && (
-            <p>
-              <span>Currencies: </span>
-              {item.currencies.map(
-                (currency, index) =>
-                  `${currency.code}${
-                    item.currencies.length - 1 !== index ? ", " : ""
-                  }`
-              )}
-            </p>
-          )}
-          <p>
-            <span>Languages: </span>
-            {item.languages.map(
-              (language, index) =>
-                `${language.name}${
-                  item.languages.length - 1 !== index ? ", " : ""
-                }`
+          </ul>
+
+          <ul className="flex flex-col gap-2.5">
+            <li>
+              <h4>
+                <span>Top Level Domain: </span>
+                {item.topLevelDomain.map(
+                  (tld, index) =>
+                    `${tld}${
+                      item.topLevelDomain.length - 1 !== index ? ", " : ""
+                    }`
+                )}
+              </h4>
+            </li>
+            {item.currencies && (
+              <li>
+                <h4>
+                  <span>Currencies: </span>
+                  {item.currencies.map(
+                    (currency, index) =>
+                      `${currency.code}${
+                        item.currencies.length - 1 !== index ? ", " : ""
+                      }`
+                  )}
+                </h4>
+              </li>
             )}
-          </p>
+            <li>
+              <h4>
+                <span>Languages: </span>
+                {item.languages.map(
+                  (language, index) =>
+                    `${language.name}${
+                      item.languages.length - 1 !== index ? ", " : ""
+                    }`
+                )}
+              </h4>
+            </li>
+          </ul>
         </section>
       ))}
     </main>
