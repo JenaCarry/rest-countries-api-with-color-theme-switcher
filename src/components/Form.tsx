@@ -55,7 +55,7 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           />
         </div>
         <ul
-          className={`w-full absolute bg-elements shadow-md rounded-lg z-10 overflow-hidden transition-all duration-200 ease-in-out ${
+          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 overflow-hidden transition-all duration-200 ease-in-out ${
             isActive
               ? "opacity-100 translate-y-0 visible"
               : "opacity-0 -translate-y-1 invisible"
@@ -64,7 +64,9 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           {regions.map((region, index) => (
             <li
               key={index}
-              className="cursor-pointer px-5 py-3 hover:bg-elements-hover transition-all duration-200 ease-in-out"
+              className={`cursor-pointer px-5 py-3 hover:bg-elements-hover transition-all duration-200 ease-in-out ${
+                region === filter ? "bg-input-text" : ""
+              }`}
               onClick={() => {
                 setFilter(region);
                 setIsActive(false);
