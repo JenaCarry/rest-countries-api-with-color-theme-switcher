@@ -13,7 +13,7 @@ interface HomeProps {
 
 export default function Home({ params }: HomeProps) {
   const [country, setCountry] = useState<CountriesProps[]>([]);
-  const { name } = params;
+  const name = decodeURIComponent(params.name);
 
   useEffect(() => {
     getCountry(name, setCountry);
@@ -21,6 +21,7 @@ export default function Home({ params }: HomeProps) {
 
   return (
     <main>
+      <h2>{name}</h2>
       {country.map((item) => (
         <section key={item.numericCode}>
           <Link href="/">Voltar CC</Link>

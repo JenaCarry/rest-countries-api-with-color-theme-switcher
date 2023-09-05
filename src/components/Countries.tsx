@@ -9,11 +9,7 @@ export function Countries({
   flags,
 }: CountryProps) {
   return (
-    <Link
-      href={{
-        pathname: `country/${name}`,
-      }}
-    >
+    <Link href={`country/${name}`}>
       <li className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ease-in-out hover:scale-105 hover:opacity-90">
         <div className="w-full h-52">
           <img
