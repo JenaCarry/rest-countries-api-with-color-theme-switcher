@@ -28,7 +28,7 @@ export default function Home() {
         <ul className="grid grid-cols-[minmax(300px,_360px)] sm:grid-cols-[repeat(2,_minmax(300px,_320px))] lg:sm:grid-cols-[repeat(3,_minmax(300px,_320px))] min-[1440px]:grid-cols-[repeat(4,_minmax(300px,_320px))] justify-center gap-8 md:gap-10 mt-16 pb-12">
           {countries
             .filter((country) =>
-              country.name.common.toLowerCase().startsWith(search.toLowerCase())
+              country.name.toLowerCase().startsWith(search.toLowerCase())
             )
             .filter((country) =>
               filter !== "Filter by Region" && filter !== "All"
@@ -37,8 +37,8 @@ export default function Home() {
             )
             .map((country) => (
               <Countries
-                key={country.name.common}
-                name={country.name.common}
+                key={country.numericCode}
+                name={country.name}
                 population={country.population}
                 region={country.region}
                 capital={country.capital}
