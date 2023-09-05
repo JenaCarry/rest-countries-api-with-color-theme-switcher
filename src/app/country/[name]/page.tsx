@@ -6,15 +6,17 @@ import Link from "next/link";
 import { useEffect, useState } from "react";
 
 interface HomeProps {
-  searchParams: {
+  params: {
     name: string;
   };
 }
 
-export default function Home({ searchParams }: HomeProps) {
+export default function Home({ params }: HomeProps) {
   const [country, setCountry] = useState<CountriesProps[]>([]);
+  const { name } = params;
+
   useEffect(() => {
-    getCountry(searchParams.name, setCountry);
+    getCountry(name, setCountry);
   }, []);
 
   return (

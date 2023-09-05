@@ -11,10 +11,7 @@ export function Countries({
   return (
     <Link
       href={{
-        pathname: "/country",
-        query: {
-          name,
-        },
+        pathname: `country/${name}`,
       }}
     >
       <li className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ease-in-out hover:scale-105 hover:opacity-90">
