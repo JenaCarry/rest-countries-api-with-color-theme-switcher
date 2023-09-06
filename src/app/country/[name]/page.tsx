@@ -5,7 +5,6 @@ import { getCountry } from "@/utils/handleApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
-import { useRouter } from "next/navigation";
 
 interface HomeProps {
   params: {
@@ -17,7 +16,6 @@ export default function Home({ params }: HomeProps) {
   const [country, setCountry] = useState<CountriesProps[]>([]);
   const [borderCountries, setBorderCountries] = useState<string[]>([]);
   const name = decodeURIComponent(params.name);
-  const router = useRouter();
 
   useEffect(() => {
     getCountry(name, setCountry, setBorderCountries);
@@ -124,12 +122,13 @@ export default function Home({ params }: HomeProps) {
               <h4 className="text-lg font-semibold mb-5">Border Countries:</h4>
               <ul className="flex flex-wrap gap-2.5">
                 {borderCountries.map((borderName) => (
-                  <li
-                    key={borderName}
-                    className="bg-elements hover:bg-elements-hover w-max px-4 py-2 rounded-lg shadow-md cursor-pointer customTransition"
-                    onClick={() => router.push(`/country/${borderName}`)}
-                  >
-                    {borderName}
+                  <li key={borderName}>
+                    <Link
+                      href={`/country/${borderName}`}
+                      className="block bg-elements hover:bg-elements-hover w-max px-4 py-2 rounded-lg shadow-md cursor-pointer customTransition"
+                    >
+                      {borderName}
+                    </Link>
                   </li>
                 ))}
               </ul>
