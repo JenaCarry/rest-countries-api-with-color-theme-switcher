@@ -1,5 +1,5 @@
 import { CountryProps } from "@/types";
-import Link from "next/link";
+import { useRouter } from "next/router";
 
 export function Countries({
   name,
@@ -8,9 +8,14 @@ export function Countries({
   capital,
   flags,
 }: CountryProps) {
+  const router = useRouter();
+
   return (
-    <Link href={`country/${name}`}>
-      <li className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer transition-all duration-200 ease-in-out hover:scale-105 hover:opacity-90">
+    <>
+      <li
+        className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer customTransition hover:scale-105 hover:opacity-90"
+        onClick={() => router.push(`country/${name}`)}
+      >
         <div className="w-full h-52">
           <img
             className="w-full h-full"
@@ -37,6 +42,6 @@ export function Countries({
           )}
         </div>
       </li>
-    </Link>
+    </>
   );
 }

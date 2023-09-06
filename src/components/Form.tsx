@@ -49,13 +49,13 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
         >
           <span className="text-primary-text">{filter}</span>
           <FaAngleDown
-            className={`text-primary-text text-base transition-all duration-200 ease-in-out ${
+            className={`text-primary-text text-base customTransition ${
               isActive && "rotate-180"
             }`}
           />
         </div>
         <ul
-          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 overflow-hidden transition-all duration-200 ease-in-out ${
+          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 overflow-hidden customTransition ${
             isActive
               ? "opacity-100 translate-y-0 visible"
               : "opacity-0 -translate-y-1 invisible"
@@ -64,7 +64,7 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           {regions.map((region, index) => (
             <li
               key={index}
-              className={`cursor-pointer px-5 py-3 hover:bg-elements-hover transition-all duration-200 ease-in-out ${
+              className={`cursor-pointer px-5 py-3 hover:bg-elements-hover customTransition ${
                 region === filter ? "bg-input-text" : ""
               }`}
               onClick={() => {

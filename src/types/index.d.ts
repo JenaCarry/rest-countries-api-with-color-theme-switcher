@@ -17,6 +17,8 @@ export interface CountriesProps {
     }
   ];
   languages: [{ name: string }];
+  border: string[];
+  alpha3Code: string;
 }
 
 export interface CountryProps {

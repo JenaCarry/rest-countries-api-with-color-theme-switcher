@@ -5,6 +5,7 @@ import { getCountry } from "@/utils/handleApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { FaArrowLeft } from "react-icons/fa";
+import { useRouter } from "next/navigation";
 
 interface HomeProps {
   params: {
@@ -14,10 +15,12 @@ interface HomeProps {
 
 export default function Home({ params }: HomeProps) {
   const [country, setCountry] = useState<CountriesProps[]>([]);
+  const [borderCountries, setBorderCountries] = useState<string[]>([]);
   const name = decodeURIComponent(params.name);
+  const router = useRouter();
 
   useEffect(() => {
-    getCountry(name, setCountry);
+    getCountry(name, setCountry, setBorderCountries);
   }, []);
 
   return (
@@ -25,7 +28,7 @@ export default function Home({ params }: HomeProps) {
       <h2 className="sr-only">Country: {name}</h2>
       <Link
         href="/"
-        className="w-40 text-base bg-elements flex items-center justify-center gap-2.5 py-3.5 rounded-md shadow-lg hover:bg-elements-hover"
+        className="w-40 text-base bg-elements flex items-center justify-center gap-2.5 py-3.5 rounded-lg shadow-md hover:bg-elements-hover customTransition"
       >
         <FaArrowLeft />
         Back
@@ -115,6 +118,23 @@ export default function Home({ params }: HomeProps) {
               </h4>
             </li>
           </ul>
+
+          {borderCountries.length > 0 && (
+            <div>
+              <h4 className="text-lg font-semibold mb-5">Border Countries:</h4>
+              <ul className="flex flex-wrap gap-2.5">
+                {borderCountries.map((borderName) => (
+                  <li
+                    key={borderName}
+                    className="bg-elements hover:bg-elements-hover w-max px-4 py-2 rounded-lg shadow-md cursor-pointer customTransition"
+                    onClick={() => router.push(`/country/${borderName}`)}
+                  >
+                    {borderName}
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
         </section>
       ))}
     </main>

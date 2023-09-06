@@ -36,3 +36,9 @@
     @apply font-semibold;
   }
 }
+
+@layer utilities {
+  .customTransition {
+    @apply transition-all duration-200 ease-in-out;
+  }
+}
