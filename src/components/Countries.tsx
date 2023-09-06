@@ -1,5 +1,5 @@
 import { CountryProps } from "@/types";
-import { useRouter } from "next/router";
+import { useRouter } from "next/navigation";
 
 export function Countries({
   name,
