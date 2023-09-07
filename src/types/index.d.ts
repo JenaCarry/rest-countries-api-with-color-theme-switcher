@@ -9,7 +9,7 @@ export interface CountriesProps {
   capital?: string[];
   tld: string[];
   currencies?: CurrenciesType;
-  languages: string[];
+  languages?: LanguagesType;
   borders?: string[];
   flags: {
     png: string;
@@ -33,4 +33,8 @@ export interface CurrenciesType {
     name: string;
     symbol: string;
   };
+}
+
+export interface LanguagesType {
+  [key: string]: string;
 }

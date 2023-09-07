@@ -1,6 +1,6 @@
 "use client";
 
-import { CountriesProps, CurrenciesType } from "@/types";
+import { CountriesProps, CurrenciesType, LanguagesType } from "@/types";
 import { getCurrencies, getFullCountryName } from "@/utils/handleApi";
 import Link from "next/link";
 import { useEffect, useState } from "react";
@@ -14,7 +14,7 @@ interface InfoCountryProps {
   capital?: string[];
   tld: string[];
   currencies?: CurrenciesType;
-  languages: string[];
+  languages?: LanguagesType;
   borders?: string[];
   flags: {
     png: string;
@@ -106,7 +106,7 @@ export function InfoCountry({
         <li>
           <h4>
             <span>Languages: </span>
-            {Object.values(languages).join(", ")}
+            {Object.values(languages || { lang: "none" })}
           </h4>
         </li>
       </ul>
