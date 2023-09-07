@@ -15,8 +15,8 @@ export function Countries({
           <div className="w-full h-52">
             <img
               className="w-full h-full"
-              src={flags}
-              alt={name}
+              src={flags.png}
+              alt={flags.alt}
               loading="lazy"
             />
           </div>

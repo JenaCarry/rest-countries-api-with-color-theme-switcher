@@ -1,30 +1,36 @@
 export interface CountriesProps {
-  name: string;
+  name: {
+    common: string;
+    official: string;
+  };
   population: number;
-  capital: string;
   region: string;
   subregion: string;
-  area: number;
-  nativeName: string;
-  numericCode: string;
+  capital?: string[];
+  tld: string[];
+  currencies?: CurrenciesType;
+  languages: string[];
+  borders?: string[];
   flags: {
     png: string;
+    alt: string;
   };
-  topLevelDomain: string[];
-  currencies: [
-    {
-      code: string;
-    }
-  ];
-  languages: [{ name: string }];
-  border: string[];
-  alpha3Code: string;
 }
 
 export interface CountryProps {
   name: string;
   population: number;
   region: string;
-  capital: string;
-  flags: string;
+  capital?: string[];
+  flags: {
+    png: string;
+    alt: string;
+  };
+}
+
+export interface CurrenciesType {
+  [key: string]: {
+    name: string;
+    symbol: string;
+  };
 }
