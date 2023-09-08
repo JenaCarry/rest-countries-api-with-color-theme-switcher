@@ -1,5 +1,4 @@
-import { CountriesProps, CurrenciesType } from "@/types";
-import data from "../../data.json";
+import { CurrenciesType } from "@/types";
 
 export const getAllCountries = async (
   setCountries: React.Dispatch<React.SetStateAction<any[]>>,

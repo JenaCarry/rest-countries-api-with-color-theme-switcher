@@ -25,7 +25,7 @@ export default function Home() {
         setSearch={setSearch}
       />
       {show && (
-        <ul className="grid grid-cols-[minmax(290px,_360px)] sm:grid-cols-[repeat(2,_minmax(290px,_320px))] lg:sm:grid-cols-[repeat(3,_minmax(290px,_320px))] min-[1440px]:grid-cols-[repeat(4,_minmax(290px,_320px))] justify-center gap-8 md:gap-10 mt-16 pb-12">
+        <ul className="grid grid-cols-[minmax(200px,_360px)] sm:grid-cols-[repeat(2,_minmax(200px,_300px))] lg:sm:grid-cols-[repeat(3,_minmax(200px,_300px))] min-[1440px]:grid-cols-[repeat(4,_minmax(200px,_300px))] justify-center gap-8 md:gap-12 lg:gap-14 mt-14 pb-12">
           {countries
             .filter((country) =>
               country.name.common.toLowerCase().startsWith(search.toLowerCase())

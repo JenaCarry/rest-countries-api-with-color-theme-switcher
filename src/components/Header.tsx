@@ -24,8 +24,8 @@ export function Header() {
   }, [isLightTheme]);
 
   return (
-    <header className="flex items-center justify-between bg-elements shadow-md text-base max-[375px]:px-3 px-8 py-11">
-      <h2 className="font-extrabold">
+    <header className="flex items-center justify-between bg-elements shadow-md text-base md:text-lg max-[375px]:px-3 px-8 py-10">
+      <h2 className="font-extrabold md:text-2xl">
         <Link href="/">Where in the world?</Link>
       </h2>
       <button

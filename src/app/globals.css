@@ -19,12 +19,16 @@
 }
 
 @layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
   body {
-    @apply flex flex-col gap-10 min-h-screen text-sm text-primary-text bg-body transition-all duration-75 ease-in-out;
+    @apply flex flex-col gap-10 min-h-screen text-base text-primary-text bg-body transition-all duration-100;
   }
 
   main {
-    @apply max-[375px]:px-3 px-8;
+    @apply max-[375px]:px-3.5 px-6 md:px-8;
   }
 
   input:-webkit-autofill {
@@ -34,6 +38,22 @@
 
   span {
     @apply font-semibold;
+  }
+
+  ::-webkit-scrollbar {
+    @apply w-3;
+  }
+
+  ::-webkit-scrollbar-track {
+    @apply bg-gray-200;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    @apply bg-slate-700 border border-solid border-gray-200 rounded-full;
+  }
+
+  ::-webkit-scrollbar-thumb:hover {
+    @apply bg-slate-900;
   }
 }
 
