@@ -76,10 +76,10 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           />
         </div>
         <ul
-          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 customTransition border ${
+          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 customTransition border overflow-hidden ${
             isActive
               ? "opacity-100 max-h-screen translate-y-0"
-              : "opacity-0 max-h-0 overflow-hidden -translate-y-3"
+              : "opacity-0 max-h-0 -translate-y-3"
           }`}
         >
           {regions.map((region, index) => (
