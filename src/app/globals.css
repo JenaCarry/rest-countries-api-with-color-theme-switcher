@@ -24,7 +24,7 @@
   }
 
   body {
-    @apply flex flex-col gap-10 min-h-screen text-base text-primary-text bg-body transition-all duration-100;
+    @apply flex flex-col gap-10 min-h-screen text-base text-primary-text bg-body;
   }
 
   main {
@@ -45,15 +45,15 @@
   }
 
   ::-webkit-scrollbar-track {
-    @apply bg-gray-200;
+    @apply bg-body;
   }
 
   ::-webkit-scrollbar-thumb {
-    @apply bg-slate-700 border border-solid border-gray-200 rounded-full;
+    @apply bg-primary-text border border-solid border-body rounded-full;
   }
 
   ::-webkit-scrollbar-thumb:hover {
-    @apply bg-slate-900;
+    @apply bg-input-text;
   }
 }
 

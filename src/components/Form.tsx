@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { FaAngleDown } from "react-icons/fa";
 import { FaSearch } from "react-icons/fa";
 
@@ -13,6 +13,7 @@ interface FormProps {
 
 export function Form({ filter, setFilter, search, setSearch }: FormProps) {
   const [isActive, setIsActive] = useState(false);
+  const dropdownRef = useRef<HTMLDivElement | null>(null);
   const regions = [
     "All",
     "Africa",
@@ -28,11 +29,20 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
   }
 
   useEffect(() => {
-    const handler = () => {
-      setIsActive(false);
+    function handleClickOutside(event: MouseEvent) {
+      if (
+        dropdownRef.current &&
+        !dropdownRef.current.contains(event.target as Node)
+      ) {
+        setIsActive(false);
+      }
+    }
+
+    document.addEventListener("mousedown", handleClickOutside);
+    return () => {
+      document.removeEventListener("mousedown", handleClickOutside);
     };
-    document.addEventListener("mousedown", handler);
-  }, [isActive]);
+  }, []);
 
   return (
     <form
@@ -56,6 +66,7 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
         <div
           className="flex items-center justify-between bg-elements py-4 shadow-md rounded-lg px-5 cursor-pointer"
           onClick={() => setIsActive(!isActive)}
+          ref={dropdownRef}
         >
           <span className="text-primary-text font-light">{filter}</span>
           <FaAngleDown
@@ -65,10 +76,10 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           />
         </div>
         <ul
-          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 overflow-hidden customTransition border ${
+          className={`w-full absolute bg-elements shadow-xl rounded-lg z-10 customTransition border ${
             isActive
-              ? "opacity-100 translate-y-0 visible"
-              : "opacity-0 -translate-y-1 invisible"
+              ? "opacity-100 max-h-screen translate-y-0"
+              : "opacity-0 max-h-0 overflow-hidden -translate-y-3"
           }`}
         >
           {regions.map((region, index) => (

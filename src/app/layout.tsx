@@ -1,7 +1,8 @@
-import { Header } from "@/components/Header";
 import "./globals.css";
 import type { Metadata } from "next";
 import { Nunito_Sans } from "next/font/google";
+import { Providers } from "@/components/Providers";
+import { Header } from "@/components/Header";
 
 const nunitoSans = Nunito_Sans({
   weight: ["300", "600", "800"],
@@ -37,11 +38,14 @@ export default function RootLayout({
   children: React.ReactNode;
 }) {
   return (
-    <html lang="en" className="">
+    <html lang="en">
       <body className={nunitoSans.className}>
-        <Header />
-        {children}
+        <Providers>
+          <Header />
+          {children}
+        </Providers>
       </body>
     </html>
   );
 }
+// className="light" style={{ colorScheme: "light" }}
