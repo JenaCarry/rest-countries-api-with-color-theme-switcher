@@ -14,6 +14,7 @@ interface FormProps {
 export function Form({ filter, setFilter, search, setSearch }: FormProps) {
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
+
   const regions = [
     "All",
     "Africa",
@@ -38,9 +39,9 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
       }
     }
 
-    document.addEventListener("mousedown", handleClickOutside);
+    document.addEventListener("click", handleClickOutside);
     return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
+      document.removeEventListener("click", handleClickOutside);
     };
   }, []);
 

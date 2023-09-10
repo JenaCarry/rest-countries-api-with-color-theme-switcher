@@ -61,4 +61,8 @@
   .customTransition {
     @apply transition-all duration-200 ease-in-out;
   }
+
+  .buttonPagination {
+    @apply flex items-center justify-center w-12 h-12 rounded-lg shadow-md hover:bg-elements-hover;
+  }
 }

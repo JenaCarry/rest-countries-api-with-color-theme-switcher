@@ -38,6 +38,10 @@ export default function Home() {
     setCurrentPage(page);
   };
 
+  if (search.length > 0) {
+    setFilter("Filter by Region");
+  }
+
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
   const currentItems = dropdownFiltered.slice(
@@ -77,7 +81,9 @@ export default function Home() {
       </ul>
       <Pagination
         itemsPerPage={itemsPerPage}
-        totalItems={countries.length}
+        totalItems={
+          search.length > 0 ? searchFiltered.length : dropdownFiltered.length
+        }
         currentPage={currentPage}
         onPageChange={onPageChange}
       />
