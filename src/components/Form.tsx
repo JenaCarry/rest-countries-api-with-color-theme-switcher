@@ -9,9 +9,16 @@ interface FormProps {
   setFilter: (filter: string) => void;
   search: string;
   setSearch: (search: string) => void;
+  onPageChange: (page: number) => void;
 }
 
-export function Form({ filter, setFilter, search, setSearch }: FormProps) {
+export function Form({
+  filter,
+  setFilter,
+  search,
+  setSearch,
+  onPageChange,
+}: FormProps) {
   const [isActive, setIsActive] = useState(false);
   const dropdownRef = useRef<HTMLDivElement | null>(null);
 
@@ -95,6 +102,7 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
               onClick={() => {
                 setFilter(region);
                 setIsActive(false);
+                onPageChange(1);
               }}
             >
               {region}

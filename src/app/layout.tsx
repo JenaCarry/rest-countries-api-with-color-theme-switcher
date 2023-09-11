@@ -48,4 +48,3 @@ export default function RootLayout({
     </html>
   );
 }
-// className="light" style={{ colorScheme: "light" }}

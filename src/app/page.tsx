@@ -22,11 +22,10 @@ export default function Home() {
         )
       : [];
 
-  const dropdownFiltered = countries.filter((country) =>
+  const dropdownFiltered =
     filter !== "Filter by Region" && filter !== "All"
-      ? country.region === filter
-      : country
-  );
+      ? countries.filter((country) => country.region === filter)
+      : countries.map((country) => country);
 
   useEffect(() => {
     getAllCountries(setCountries);
@@ -39,8 +38,6 @@ export default function Home() {
     indexOfLastItem
   );
 
-  console.log("Renderizou");
-
   const onPageChange = (page: number) => {
     setCurrentPage(page);
   };
@@ -52,6 +49,7 @@ export default function Home() {
         setFilter={setFilter}
         search={search}
         setSearch={setSearch}
+        onPageChange={onPageChange}
       />
       <ul className="grid grid-cols-[minmax(200px,_360px)] sm:grid-cols-[repeat(2,_minmax(200px,_300px))] lg:sm:grid-cols-[repeat(3,_minmax(200px,_300px))] min-[1440px]:grid-cols-[repeat(4,_minmax(200px,_300px))] justify-center gap-8 md:gap-12 lg:gap-14 mt-14 pb-12">
         {search.length > 0

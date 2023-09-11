@@ -1,4 +1,9 @@
-import { FaAngleLeft, FaAngleRight } from "react-icons/fa";
+import {
+  FaAngleLeft,
+  FaAngleRight,
+  FaAngleDoubleLeft,
+  FaAngleDoubleRight,
+} from "react-icons/fa";
 
 interface PaginationProps {
   currentPage: number;
@@ -17,14 +22,14 @@ export function Pagination({
   const hasPrev = currentPage > 1;
   const hasNext = currentPage < totalPages;
 
-  let maxLeft = currentPage - Math.floor(5 / 2);
-  let maxRight = currentPage + Math.floor(5 / 2);
+  let maxLeft = currentPage - Math.floor(3 / 2);
+  let maxRight = currentPage + Math.floor(3 / 2);
   if (maxLeft < 1) {
     maxLeft = 1;
-    maxRight = 5;
+    maxRight = 3;
   }
   if (maxRight > totalPages) {
-    maxLeft = totalPages - (5 - 1);
+    maxLeft = totalPages - (3 - 1);
     maxRight = totalPages;
     if (maxLeft < 1) maxLeft = 1;
   }
@@ -39,6 +44,9 @@ export function Pagination({
       onPageChange(currentPage - 1);
       window.scrollTo(0, 0);
     }
+    if (currentPage > totalPages) {
+      window.scrollTo(0, 0);
+    }
   }
 
   function nextPage() {
@@ -49,17 +57,39 @@ export function Pagination({
   }
 
   return (
-    <ul className="flex items-center justify-center gap-2 pb-12">
+    <ul className="flex items-center justify-center gap-2 pb-12 font-extrabold">
+      <li className="hidden sm:block">
+        <button
+          className={`buttonPagination bg-elements ${
+            !hasPrev
+              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
+              : null
+          }`}
+          onClick={() => onPageChange(1)}
+          disabled={!hasPrev}
+        >
+          <FaAngleDoubleLeft className="text-lg" />
+        </button>
+      </li>
       <li>
-        <button className="buttonPagination bg-elements" onClick={previousPage}>
+        <button
+          className={`buttonPagination bg-elements ${
+            !hasPrev
+              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
+              : null
+          }`}
+          onClick={previousPage}
+          disabled={!hasPrev}
+        >
           <FaAngleLeft className="text-lg" />
         </button>
       </li>
+
       {items.map((item) => (
         <li key={item}>
           <button
             className={`buttonPagination bg-elements ${
-              item === currentPage ? "bg-input-text" : null
+              item === currentPage ? "bg-input-text text-white" : null
             }`}
             onClick={() => {
               onPageChange(item);
@@ -70,9 +100,31 @@ export function Pagination({
           </button>
         </li>
       ))}
+
       <li>
-        <button className="buttonPagination bg-elements" onClick={nextPage}>
+        <button
+          className={`buttonPagination bg-elements ${
+            !hasNext
+              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
+              : null
+          }`}
+          onClick={nextPage}
+          disabled={!hasNext}
+        >
           <FaAngleRight className="text-lg" />
+        </button>
+      </li>
+      <li className="hidden sm:block">
+        <button
+          className={`buttonPagination bg-elements ${
+            !hasNext
+              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
+              : null
+          }`}
+          onClick={() => onPageChange(totalPages)}
+          disabled={!hasNext}
+        >
+          <FaAngleDoubleRight className="text-lg" />
         </button>
       </li>
     </ul>
