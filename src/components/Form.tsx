@@ -58,7 +58,10 @@ export function Form({ filter, setFilter, search, setSearch }: FormProps) {
           placeholder="Search for a country"
           className="w-full text-primary-text font-semibold bg-elements py-4 shadow-md pl-12 pr-5 rounded-lg outline-none placeholder:font-light"
           value={search}
-          onChange={(e) => setSearch(e.target.value)}
+          onChange={(e) => {
+            setSearch(e.target.value);
+            setFilter("Filter by Region");
+          }}
         />
         <FaSearch className="absolute left-5" />
       </div>

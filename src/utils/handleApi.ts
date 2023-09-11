@@ -1,15 +1,13 @@
 import { CurrenciesType } from "@/types";
 
 export const getAllCountries = async (
-  setCountries: React.Dispatch<React.SetStateAction<any[]>>,
-  setShow: (test: boolean) => void
+  setCountries: React.Dispatch<React.SetStateAction<any[]>>
 ) => {
   try {
     const response = await fetch("https://restcountries.com/v3.1/all");
     const data = await response.json();
 
     setCountries(data);
-    setShow(true);
   } catch (error) {
     console.log(error);
     throw error;

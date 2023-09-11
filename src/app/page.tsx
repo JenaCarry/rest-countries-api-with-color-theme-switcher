@@ -1,23 +1,17 @@
 "use client";
-
-import { Countries } from "@/components/Countries";
-import { Form } from "@/components/Form";
-import { Pagination } from "@/components/Pagination";
-import { CountriesProps } from "@/types";
-import { getAllCountries } from "@/utils/handleApi";
 import { useEffect, useState } from "react";
+import { getAllCountries } from "@/utils/handleApi";
+import { CountriesProps } from "@/types";
+import { Form } from "@/components/Form";
+import { Countries } from "@/components/Countries";
+import { Pagination } from "@/components/Pagination";
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("Filter by Region");
-  const [show, setShow] = useState<boolean>(false);
   const [countries, setCountries] = useState<CountriesProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
   const itemsPerPage = 24;
-
-  useEffect(() => {
-    getAllCountries(setCountries, setShow);
-  }, []);
 
   const searchFiltered =
     search.length > 0
@@ -34,13 +28,9 @@ export default function Home() {
       : country
   );
 
-  const onPageChange = (page: number) => {
-    setCurrentPage(page);
-  };
-
-  if (search.length > 0) {
-    setFilter("Filter by Region");
-  }
+  useEffect(() => {
+    getAllCountries(setCountries);
+  }, []);
 
   const indexOfLastItem = currentPage * itemsPerPage;
   const indexOfFirstItem = indexOfLastItem - itemsPerPage;
@@ -48,6 +38,13 @@ export default function Home() {
     indexOfFirstItem,
     indexOfLastItem
   );
+
+  console.log("Renderizou");
+
+  const onPageChange = (page: number) => {
+    setCurrentPage(page);
+  };
+
   return (
     <main>
       <Form

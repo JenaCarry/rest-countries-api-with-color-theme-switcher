@@ -16,8 +16,21 @@ export function Pagination({
   const totalPages = Math.ceil(totalItems / itemsPerPage);
   const hasPrev = currentPage > 1;
   const hasNext = currentPage < totalPages;
+
+  let maxLeft = currentPage - Math.floor(5 / 2);
+  let maxRight = currentPage + Math.floor(5 / 2);
+  if (maxLeft < 1) {
+    maxLeft = 1;
+    maxRight = 5;
+  }
+  if (maxRight > totalPages) {
+    maxLeft = totalPages - (5 - 1);
+    maxRight = totalPages;
+    if (maxLeft < 1) maxLeft = 1;
+  }
+
   const items = new Array();
-  for (let i = 1; i <= totalPages; i++) {
+  for (let i = maxLeft; i <= maxRight; i++) {
     items.push(i);
   }
 
