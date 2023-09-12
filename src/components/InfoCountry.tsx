@@ -125,7 +125,7 @@ export function InfoCountry({
               {neighbors.map((item) => (
                 <li key={item.name.common}>
                   <Link
-                    href={`/country/${item.name.common}`}
+                    href={`/country/${encodeURI(item.name.common)}`}
                     className="block bg-elements hover:bg-elements-hover w-max px-4 py-2 rounded-lg shadow-md cursor-pointer customTransition"
                     onClick={() => window.scrollTo(0, 0)}
                   >
