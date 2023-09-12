@@ -11,7 +11,7 @@ export function Countries({
   return (
     <>
       <li className="bg-elements shadow-md rounded-lg overflow-hidden cursor-pointer customTransition hover:scale-105 hover:opacity-90">
-        <Link href={`country/${name}`} className="block">
+        <Link href={`country/${encodeURI(name)}`} className="block">
           <div className="w-full h-48">
             <img
               className="w-full h-full shadow-md object-cover"
