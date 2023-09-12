@@ -104,7 +104,9 @@ export function InfoCountry({
             <li>
               <h4>
                 <span>Languages: </span>
-                {Object.values(languages || { lang: "none" })}
+                {languages
+                  ? Object.values(languages).join(", ")
+                  : Object.values(languages || { lang: "none" })}
               </h4>
             </li>
           </ul>

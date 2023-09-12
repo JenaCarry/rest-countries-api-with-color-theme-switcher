@@ -57,33 +57,32 @@ export function Pagination({
   }
 
   return (
-    <ul className="flex items-center justify-center gap-2 pb-12 font-extrabold">
-      <li className="hidden sm:block">
-        <button
-          className={`buttonPagination bg-elements ${
-            !hasPrev
-              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
-              : null
-          }`}
-          onClick={() => onPageChange(1)}
-          disabled={!hasPrev}
-        >
-          <FaAngleDoubleLeft className="text-lg" />
-        </button>
-      </li>
-      <li>
-        <button
-          className={`buttonPagination bg-elements ${
-            !hasPrev
-              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
-              : null
-          }`}
-          onClick={previousPage}
-          disabled={!hasPrev}
-        >
-          <FaAngleLeft className="text-lg" />
-        </button>
-      </li>
+    <ul className="flex items-center justify-center gap-2 pb-14 font-extrabold">
+      {currentPage > 1 && (
+        <>
+          <li className="hidden min-[481px]:block">
+            <button
+              aria-label="first page"
+              className="buttonPagination bg-elements"
+              onClick={() => {
+                onPageChange(1);
+                window.scrollTo(0, 0);
+              }}
+            >
+              <FaAngleDoubleLeft className="text-lg" />
+            </button>
+          </li>
+          <li>
+            <button
+              aria-label="previous"
+              className="buttonPagination bg-elements"
+              onClick={previousPage}
+            >
+              <FaAngleLeft className="text-lg" />
+            </button>
+          </li>
+        </>
+      )}
 
       {items.map((item) => (
         <li key={item}>
@@ -101,32 +100,31 @@ export function Pagination({
         </li>
       ))}
 
-      <li>
-        <button
-          className={`buttonPagination bg-elements ${
-            !hasNext
-              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
-              : null
-          }`}
-          onClick={nextPage}
-          disabled={!hasNext}
-        >
-          <FaAngleRight className="text-lg" />
-        </button>
-      </li>
-      <li className="hidden sm:block">
-        <button
-          className={`buttonPagination bg-elements ${
-            !hasNext
-              ? "disabled:bg-elements disabled:text-primary-text disabled:opacity-50"
-              : null
-          }`}
-          onClick={() => onPageChange(totalPages)}
-          disabled={!hasNext}
-        >
-          <FaAngleDoubleRight className="text-lg" />
-        </button>
-      </li>
+      {currentPage < totalPages && (
+        <>
+          <li>
+            <button
+              aria-label="next"
+              className="buttonPagination bg-elements"
+              onClick={nextPage}
+            >
+              <FaAngleRight className="text-lg" />
+            </button>
+          </li>
+          <li className="hidden min-[481px]:block">
+            <button
+              aria-label="last page"
+              className="buttonPagination bg-elements"
+              onClick={() => {
+                onPageChange(totalPages);
+                window.scrollTo(0, 0);
+              }}
+            >
+              <FaAngleDoubleRight className="text-lg" />
+            </button>
+          </li>
+        </>
+      )}
     </ul>
   );
 }

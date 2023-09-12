@@ -1,17 +1,19 @@
 "use client";
-import { useEffect, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { getAllCountries } from "@/utils/handleApi";
 import { CountriesProps } from "@/types";
 import { Form } from "@/components/Form";
 import { Countries } from "@/components/Countries";
 import { Pagination } from "@/components/Pagination";
+import { FaAngleUp, FaAngleDown } from "react-icons/fa";
 
 export default function Home() {
   const [search, setSearch] = useState<string>("");
   const [filter, setFilter] = useState<string>("Filter by Region");
   const [countries, setCountries] = useState<CountriesProps[]>([]);
   const [currentPage, setCurrentPage] = useState(1);
-  const itemsPerPage = 24;
+  const endPage = useRef<HTMLDivElement | null>(null);
+  let itemsPerPage = 24;
 
   const searchFiltered =
     search.length > 0
@@ -43,7 +45,7 @@ export default function Home() {
   };
 
   return (
-    <main>
+    <main className="relative">
       <Form
         filter={filter}
         setFilter={setFilter}
@@ -82,6 +84,25 @@ export default function Home() {
         currentPage={currentPage}
         onPageChange={onPageChange}
       />
+
+      <div className="flex gap-1 fixed bottom-2 right-4 min-[1440px]:hidden">
+        <button
+          aria-label="top"
+          onClick={() => window.scrollTo(0, 0)}
+          className="p-1.5 bg-elements-hover rounded-full hover:bg-input-text hover:text-white"
+        >
+          <FaAngleUp />
+        </button>
+        <button
+          aria-label="bottom"
+          onClick={() => endPage.current?.scrollIntoView()}
+          className="p-1.5 bg-elements-hover rounded-full hover:bg-input-text hover:text-white"
+        >
+          <FaAngleDown />
+        </button>
+      </div>
+
+      <div ref={endPage} />
     </main>
   );
 }

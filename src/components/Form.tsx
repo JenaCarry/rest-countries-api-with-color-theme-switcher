@@ -1,8 +1,7 @@
 "use client";
 
 import React, { useEffect, useRef, useState } from "react";
-import { FaAngleDown } from "react-icons/fa";
-import { FaSearch } from "react-icons/fa";
+import { FaAngleDown, FaSearch } from "react-icons/fa";
 
 interface FormProps {
   filter: string;
@@ -59,6 +58,7 @@ export function Form({
     >
       <div className="relative flex items-center w-full max-w-md">
         <input
+          aria-label="search country"
           type="search"
           name="search"
           id="search"
@@ -103,6 +103,7 @@ export function Form({
                 setFilter(region);
                 setIsActive(false);
                 onPageChange(1);
+                setSearch("");
               }}
             >
               {region}

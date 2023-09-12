@@ -25,6 +25,7 @@ export default function Home({ params }: HomeProps) {
     <main>
       <h2 className="sr-only">Country: {name}</h2>
       <Link
+        aria-label="return to home page"
         href="/"
         className="w-40 text-base bg-elements flex items-center justify-center gap-2.5 py-3.5 rounded-lg shadow-md hover:bg-elements-hover customTransition"
       >
