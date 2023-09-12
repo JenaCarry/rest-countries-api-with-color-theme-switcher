@@ -1,6 +1,7 @@
 "use client";
 
 import { InfoCountry } from "@/components/InfoCountry";
+import { Loading } from "@/components/Loading";
 import { CountriesProps } from "@/types";
 import { getCountryInfo } from "@/utils/handleApi";
 import Link from "next/link";
@@ -15,10 +16,11 @@ interface HomeProps {
 
 export default function Home({ params }: HomeProps) {
   const [countryInfo, setCountryInfo] = useState<CountriesProps[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(true);
   const name = decodeURIComponent(params.name);
 
   useEffect(() => {
-    getCountryInfo(name, setCountryInfo);
+    getCountryInfo(name, setCountryInfo, setIsLoading);
   }, []);
 
   return (
@@ -32,22 +34,26 @@ export default function Home({ params }: HomeProps) {
         <FaArrowLeft />
         Back
       </Link>
-      {countryInfo.map((item) => (
-        <InfoCountry
-          key={item.name.common}
-          name={item.name.common}
-          population={item.population}
-          nativeName={item.name.official}
-          region={item.region}
-          subregion={item.subregion}
-          capital={item.capital}
-          tld={item.tld}
-          currencies={item.currencies}
-          languages={item.languages}
-          borders={item.borders}
-          flags={item.flags}
-        />
-      ))}
+      {!isLoading ? (
+        countryInfo.map((item) => (
+          <InfoCountry
+            key={item.name.common}
+            name={item.name.common}
+            population={item.population}
+            nativeName={item.name.official}
+            region={item.region}
+            subregion={item.subregion}
+            capital={item.capital}
+            tld={item.tld}
+            currencies={item.currencies}
+            languages={item.languages}
+            borders={item.borders}
+            flags={item.flags}
+          />
+        ))
+      ) : (
+        <Loading text="loading country" />
+      )}
     </main>
   );
 }

@@ -1,7 +1,8 @@
-import { CurrenciesType } from "@/types";
+import { CountriesProps, CurrenciesType } from "@/types";
 
 export const getAllCountries = async (
-  setCountries: React.Dispatch<React.SetStateAction<any[]>>
+  setCountries: (countries: CountriesProps[]) => void,
+  setIsLoading: (loading: boolean) => void
 ) => {
   try {
     const response = await fetch("https://restcountries.com/v3.1/all");
@@ -11,12 +12,15 @@ export const getAllCountries = async (
   } catch (error) {
     console.log(error);
     throw error;
+  } finally {
+    setIsLoading(false);
   }
 };
 
 export const getCountryInfo = async (
   name: string,
-  setCountry: React.Dispatch<React.SetStateAction<any[]>>
+  setCountry: (country: CountriesProps[]) => void,
+  setIsLoading: (loading: boolean) => void
 ) => {
   try {
     const response = await fetch(
@@ -28,19 +32,26 @@ export const getCountryInfo = async (
   } catch (error) {
     console.log(error);
     throw error;
+  } finally {
+    setIsLoading(false);
   }
 };
 
 export const getFullCountryName = async (
   borders: string[],
-  setNeighbors: React.Dispatch<React.SetStateAction<any[]>>
+  setNeighbors: (neighbors: CountriesProps[]) => void
 ) => {
-  const response = await fetch(
-    `https://restcountries.com/v3.1/alpha?codes=${borders?.join(",")}`
-  );
-  const data = await response.json();
+  try {
+    const response = await fetch(
+      `https://restcountries.com/v3.1/alpha?codes=${borders?.join(",")}`
+    );
+    const data = await response.json();
 
-  setNeighbors(data);
+    setNeighbors(data);
+  } catch (error) {
+    console.log(error);
+    throw error;
+  }
 };
 
 export const getCurrencies = (obj: CurrenciesType = {}): string[] | null => {
