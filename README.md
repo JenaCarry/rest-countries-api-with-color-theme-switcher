@@ -5,7 +5,7 @@
   <h2>REST Countries API with color theme switcher</h2>
 
   <h3>
-    <a href="">
+    <a href="https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-2eiA_NNDs-">
       <strong>Frontend Mentor</strong>
     </a>
   </h3>
@@ -34,7 +34,7 @@ This is a solution to the [REST Countries API with color theme switcher challeng
 
 <h2>Links</h2>
 
-- Solution URL: [REST Countries API with color theme switcher | Frontend Mentor]()
+- Solution URL: [REST Countries API with color theme switcher | Frontend Mentor](https://www.frontendmentor.io/solutions/rest-countries-api-with-color-theme-switcher-2eiA_NNDs-)
 - Live Site URL: [https://rest-countries-api-with-color-theme-switcher-weld.vercel.app/](https://rest-countries-api-with-color-theme-switcher-weld.vercel.app/)
 
 <br>
