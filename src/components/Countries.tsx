@@ -16,7 +16,7 @@ export function Countries({
             <img
               className="w-full h-full shadow-md object-cover"
               src={flags.png}
-              alt={flags.alt}
+              alt={flags.alt ? flags.alt : name}
             />
           </div>
           <ul className="px-8 py-6 space-y-2.5">
