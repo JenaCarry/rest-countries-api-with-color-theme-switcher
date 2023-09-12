@@ -17,7 +17,6 @@ export function Countries({
               className="w-full h-full shadow-md object-cover"
               src={flags.png}
               alt={flags.alt}
-              loading="lazy"
             />
           </div>
           <ul className="px-8 py-6 space-y-2.5">
