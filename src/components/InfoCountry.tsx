@@ -47,7 +47,7 @@ export function InfoCountry({
       <div className="lg:w-1/2 lg:max-w-lg">
         <img
           src={flags.png}
-          alt={flags.alt}
+          alt={flags.alt ? flags.alt : name}
           className="w-full max-h-[500px] shadow-md rounded-sm"
         />
       </div>
