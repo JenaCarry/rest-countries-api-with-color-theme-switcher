@@ -112,7 +112,11 @@ export function InfoCountry({
           </ul>
         </div>
         <div className="flex flex-col gap-4 lg:flex-row lg:items-center">
-          <h4 className="text-lg font-semibold lg:hidden">Border Countries:</h4>
+          {neighbors.length > 0 && (
+            <h4 className="text-lg font-semibold lg:hidden">
+              Border Countries:
+            </h4>
+          )}
           {neighbors.length > 0 ? (
             <ul className="flex flex-wrap gap-2.5 lg:items-center">
               <li className="hidden lg:block">
