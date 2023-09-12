@@ -22,7 +22,7 @@ export default function Home() {
       ? countries.filter((country) =>
           country.name.common
             .toLocaleLowerCase()
-            .startsWith(search.toLocaleLowerCase())
+            .startsWith(search.trim().toLocaleLowerCase())
         )
       : [];
 

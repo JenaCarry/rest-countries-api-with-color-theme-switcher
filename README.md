@@ -5,7 +5,7 @@
   <h2>REST Countries API with color theme switcher</h2>
 
   <h3>
-    <a href="https://www.frontendmentor.io/solutions/todo-app-Xd2XKWu4p2">
+    <a href="">
       <strong>Frontend Mentor</strong>
     </a>
   </h3>
@@ -67,7 +67,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./public/screenshot.jpg)
+![](./public/screenshot.png)
 
 ## My process
 

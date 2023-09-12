@@ -96,8 +96,8 @@ export function Form({
           {regions.map((region, index) => (
             <li
               key={index}
-              className={`cursor-pointer px-5 py-2 hover:bg-elements-hover customTransition ${
-                region === filter ? "bg-input-text" : ""
+              className={`cursor-pointer px-5 py-2 hover:bg-elements-hover hover:text-primary-text customTransition ${
+                region === filter ? "bg-input-text text-white" : ""
               }`}
               onClick={() => {
                 setFilter(region);
