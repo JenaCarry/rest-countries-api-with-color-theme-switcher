@@ -48,6 +48,7 @@ export default function Home() {
 
   return (
     <main className="relative">
+      <h1 className="sr-only">REST Countries API with color theme switcher</h1>
       <Form
         filter={filter}
         setFilter={setFilter}
@@ -55,6 +56,13 @@ export default function Home() {
         setSearch={setSearch}
         onPageChange={onPageChange}
       />
+      {search.length > 0 && searchFiltered.length === 0 && (
+        <div>
+          <h2 className="text-2xl font-semibold text-center mt-20">
+            Country not found...
+          </h2>
+        </div>
+      )}
       {!isLoading ? (
         <ul className="grid grid-cols-[minmax(200px,_360px)] sm:grid-cols-[repeat(2,_minmax(200px,_300px))] lg:sm:grid-cols-[repeat(3,_minmax(200px,_300px))] min-[1440px]:grid-cols-[repeat(4,_minmax(200px,_300px))] justify-center gap-8 md:gap-12 lg:gap-14 mt-14 pb-12">
           {search.length > 0
