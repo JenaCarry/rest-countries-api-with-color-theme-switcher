@@ -25,7 +25,7 @@ export function ThemeButton() {
       ) : (
         <BsMoon className="text-lg font-extrabold" />
       )}
-      {resolvedTheme === "dark" ? "Dark Mode" : "Light Mode"}
+      {resolvedTheme === "dark" ? "Light Mode" : "Dark Mode"}
     </button>
   );
 }
